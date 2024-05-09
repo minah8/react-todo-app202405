@@ -5,15 +5,13 @@ import {
   MdDoneOutline,
 } from 'react-icons/md';
 
-const TodoItem = () => {
+const TodoItem = ({ item }) => {
   return (
     <li className="todo-list-item">
       <div className="check-circle">
         <MdDoneOutline />
       </div>
-      <span className="text">
-        할 일 어쩌고~~~~~~~~~~~~~
-      </span>
+      <span className="text">{item.title}</span>
       <div className="remove">
         <MdDeleteOutline />
       </div>
