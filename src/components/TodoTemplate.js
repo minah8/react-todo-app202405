@@ -73,10 +73,51 @@ const TodoTemplate = () => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
 
+  // 할 일 체크 처리 함수
+  const checkTodo = (id) => {
+    // console.log('check id: ', id);
+    //   const checkedTodo = todos.map((todo) => {
+    //     if (todo.id === id) {
+    //       if (!todo.done) {
+    //         return { ...todo, done: true };
+    //       } else {
+    //         return { ...todo, done: false };
+    //       }
+    //     } else {
+    //       return todo;
+    //     }
+    //   });
+    //   setTodos(checkedTodo);
+
+    // const copyTodos = [...todos];
+    // for (let cTodo of copyTodos) {
+    //   if (cTodo.id === id) {
+    //     cTodo.done = !cTodo.done;
+    //   }
+    // }
+    // setTodos(copyTodos);
+
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id
+          ? { ...todo, done: !todo.done }
+          : todo,
+      ),
+    );
+  };
+
+  // 체크가 안 된 할 일의 개수를 카운트 하기
+  const countRestTodo = () =>
+    todos.filter((todo) => !todo.done).length;
+
   return (
     <div className="TodoTemplate">
-      <TodoHeader />
-      <TodoMain todoList={todos} remove={removeTodo} />
+      <TodoHeader count={countRestTodo} />
+      <TodoMain
+        todoList={todos}
+        remove={removeTodo}
+        check={checkTodo}
+      />
       <TodoInput addTodo={addTodo} />
     </div>
   );
