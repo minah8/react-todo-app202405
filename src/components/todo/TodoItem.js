@@ -1,5 +1,5 @@
 import React from 'react';
-import '../scss/TodoItem.scss';
+import '../../scss/TodoItem.scss';
 import {
   MdDeleteOutline,
   MdDoneOutline,

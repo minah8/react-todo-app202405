@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../scss/TodoInput.scss';
+import '../../scss/TodoInput.scss';
 import { RiHeartAdd2Fill } from 'react-icons/ri';
 import cn from 'classnames';
 
