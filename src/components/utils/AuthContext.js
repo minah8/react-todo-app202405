@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // 새로운 전역 컨텍스트 생성
 const AuthContext = React.createContext({
   isLoggedIn: false, // 로그인 했는지의 여부
   userName: '',
   onLogout: () => {},
-  onLogin: (email, password) => {},
+  onLogin: () => {},
 });
 
 // 위에서 생성한 Context를 제공하는 provider
@@ -32,6 +32,14 @@ export const AuthContextProvider = (props) => {
     setIsLoggedIn(false);
     setUserName('');
   };
+
+  useEffect(() => {
+    if (localStorage.getItem('ACCESS_TOKEN')) {
+      setIsLoggedIn(true);
+      setUserName(localStorage.getItem('LOGIN_USERNAME'));
+    }
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
