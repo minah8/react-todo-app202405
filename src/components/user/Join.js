@@ -177,7 +177,7 @@ const Join = () => {
       'passwordCheck',
       'pass',
       msg,
-      'flag',
+      flag,
     );
   };
   // 4개의 입력창이 모두 검증에 통과했는지 여부를 검사
