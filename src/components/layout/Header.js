@@ -63,10 +63,10 @@ const Header = () => {
     ) {
       // 서버에서는 byte[]로 직렬화된 이미지가 응답되므로
       // blob()을 통해 전달받아야 한다 (json() XXXXXXXX)
-      const profileBolb = await res.blob();
+      const profileBlob = await res.blob();
       // 해당 이미지를 imgUrl로 변경
       const imgUrl =
-        window.URL.createObjectURL(profileBolb);
+        window.URL.createObjectURL(profileBlob);
       setProfileUrl(imgUrl);
     } else if (
       res.status === 200 &&
@@ -75,7 +75,7 @@ const Header = () => {
       const imageUrl = await res.text();
       setProfileUrl(imageUrl);
     } else {
-      const err = await res.error();
+      const err = await res.text();
       console.log('err: ', err);
       setProfileUrl(null);
     }
